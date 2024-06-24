@@ -7,7 +7,7 @@ function Register() {
   return (
     <div className="flex flex-col min-h-screen">
         <Navbar />
-        <main className="flex-grow bg-[#7a7d79] flex flex-col justify-center items-center">
+        <main className="flex-grow bg-[#6A6D69] flex flex-col justify-center items-center">
             <RegisterComponent />
         </main>
         <Footer />
