@@ -10,11 +10,11 @@ function Navbar() {
             <div className="text-white text-xl">Pacheco's Coffee Shop</div>
           </div>
           <div>
-            <a href="#" className="py-2 px-2 mx-2 font-medium text-white rounded hover:bg-[#838E83] hover:text-white transition duration-300">Inicio</a>
+            <a href="/" className="py-2 px-2 mx-2 font-medium text-white rounded hover:bg-[#838E83] hover:text-white transition duration-300">Inicio</a>
             <a href="#" className="py-2 px-2 font-medium text-white rounded hover:bg-[#838E83] hover:text-white transition duration-300">Coffee</a>
             <a href="#" className="py-2 px-2 font-medium text-white rounded hover:bg-[#838E83] hover:text-white transition duration-300">Acerca de</a>
-            <a href="#" className="py-2 px-2 font-medium text-white rounded hover:bg-[#838E83] hover:text-white transition duration-300">Iniciar Sesión</a>
-            <a href="#" className="py-2 px-2 font-medium text-white rounded hover:bg-[#838E83] hover:text-white transition duration-300">Registrarse</a>
+            <a href="/login" className="py-2 px-2 font-medium text-white rounded hover:bg-[#838E83] hover:text-white transition duration-300">Iniciar Sesión</a>
+            <a href="/register" className="py-2 px-2 font-medium text-white rounded hover:bg-[#838E83] hover:text-white transition duration-300">Registrarse</a>
           </div>
         </div>
       </div>
