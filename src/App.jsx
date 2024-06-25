@@ -4,7 +4,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Inicio from './Pages/Inicio';
 import Login from './Pages/Login';
 import Register from './Pages/Register';
-import GestionCoffee from './Pages/GestionCoffee';
+import GestionCoffees from './Pages/GestionCoffees';
 
 export const LoginContext = createContext({});
 
@@ -25,7 +25,7 @@ function App() {
             <Route path="/" element={<Inicio />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
-            <Route path="/admin/gestion-coffees" element={<GestionCoffee />} />
+            <Route path="/admin/gestion-coffees" element={<GestionCoffees />} />
           </Routes>
         </BrowserRouter>
       </LoginContext.Provider>

@@ -3,7 +3,7 @@ import Navbar from '../Components/Shared/Navbar'
 import Footer from '../Components/Shared/Footer'
 import GestionCoffeesComponent from '../Components/GestionCoffeeComponent';
 
-function GestionCoffee() {
+function GestionsCoffee() {
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
@@ -17,4 +17,4 @@ function GestionCoffee() {
   )
 }
 
-export default GestionCoffee
+export default GestionsCoffee
