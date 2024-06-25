@@ -33,7 +33,7 @@ function Navbar() {
             <a href="#" className="py-2 px-2 font-medium text-white rounded hover:bg-[#5C655C] hover:text-white transition duration-300">Acerca de</a>
             {userRole === 'ADMIN' && (
               <>
-              <a href="/login/admin" className="py-2 px-2 mx-1 font-medium text-white rounded hover:bg-[#5C655C] hover:text-white transition duration-300">Gestión Coffees</a>
+              <a href="/admin/gestion-coffees" className="py-2 px-2 mx-1 font-medium text-white rounded hover:bg-[#5C655C] hover:text-white transition duration-300">Gestión Coffees</a>
               <a href="/login/admin" className="py-2 px-2 mx-1 font-medium text-white rounded hover:bg-[#5C655C] hover:text-white transition duration-300">Clientes</a>
               </>
             )}
