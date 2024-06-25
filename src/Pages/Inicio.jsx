@@ -16,11 +16,16 @@ function Inicio() {
             <p className="text-xl text-[#C7C7C7]">El verdadero sabor del Café</p>
           </div>
         </div>
-        <div className="bg-[#494D47] p-4 w-full h-20 flex items-center justify-evenly">
-        <img className='h-auto w-32 object-cover' src="/cruzeiro_coffee.webp" />
-        <img className='h-auto w-14 object-cover' src="/marley_coffee.webp" />
-        <img className='h-auto w-32 object-cover' src="/nescafe_coffee.webp" />
-        <img className='h-auto w-24 object-cover' src="/native_coffee.webp" />
+        <div className="bg-[#494D47] p-8 w-full h-auto flex flex-col">
+          <div className='flex justify-center items-center mb-2'>
+            <h3 className='text-3xl text-white font-bold'>POTENCIADO POR</h3>
+          </div>
+          <div className='flex justify-evenly items-center mt-2'>
+            <img className='h-auto w-32 object-cover' src="/cruzeiro_coffee.webp" />
+            <img className='h-auto w-14 object-cover' src="/marley_coffee.webp" />
+            <img className='h-auto w-32 object-cover' src="/nescafe_coffee.webp" />
+            <img className='h-auto w-24 object-cover' src="/native_coffee.webp" />
+          </div>
         </div>
         <CardContainerComponent />
       </main>

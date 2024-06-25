@@ -9,7 +9,7 @@ function CardContainer() {
             <div className="h-7/8 border-2 border-[#49494999] border-opacity-60 rounded-lg overflow-hidden bg-[#494D47]">
               <div className="relative">
                 <img className="lg:h-48 md:h-36 w-full object-cover object-center" src="/card1.webp" alt="blog" />
-                <div className="absolute inset-0 bg-black opacity-50"></div>
+                <div className="absolute inset-0 bg-black opacity-30"></div>
               </div>
               <div className="p-6">
                 <h2 className="tracking-widest text-xs title-font font-medium text-gray-300 mb-1">INFORMACIÓN</h2>
@@ -41,7 +41,7 @@ function CardContainer() {
             <div className="h-7/8 border-2 border-[#49494999] border-opacity-60 rounded-lg overflow-hidden bg-[#494D47]">
               <div className="relative">
                 <img className="lg:h-48 md:h-36 w-full object-cover object-center" src="/card2.webp" alt="blog" />
-                <div className="absolute inset-0 bg-black opacity-50"></div>
+                <div className="absolute inset-0 bg-black opacity-30"></div>
               </div>
               <div className="p-6">
                 <h2 className="tracking-widest text-xs title-font font-medium text-gray-300 mb-1">INFORMACIÓN</h2>
@@ -73,7 +73,7 @@ function CardContainer() {
             <div className="h-7/8 border-2 border-[#49494999] border-opacity-60 rounded-lg overflow-hidden bg-[#494D47]">
               <div className="relative">
                 <img className="lg:h-48 md:h-36 w-full object-cover object-center" src="/card3.webp" alt="blog" />
-                <div className="absolute inset-0 bg-black opacity-50"></div>
+                <div className="absolute inset-0 bg-black opacity-30"></div>
               </div>
               <div className="p-6">
                 <h2 className="tracking-widest text-xs title-font font-medium text-gray-300 mb-1">INFORMACIÓN</h2>
