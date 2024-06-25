@@ -24,7 +24,7 @@ function Navbar() {
       <div className="container mx-auto">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-5">
-            <img src="/logo_pachecos_coffee_shop.png" alt="logo-coffee-shop" className="h-12" />
+            <img src="/logo_pachecos_coffee_shop.webp" alt="logo-coffee-shop" className="h-12" />
             <div className="text-white text-xl">Pacheco's Coffee Shop</div>
           </div>
           <div>
@@ -34,7 +34,7 @@ function Navbar() {
             {userRole === 'ADMIN' && (
               <>
               <a href="/admin/gestion-coffees" className="py-2 px-2 mx-1 font-medium text-white rounded hover:bg-[#5C655C] hover:text-white transition duration-300">Gestión Coffees</a>
-              <a href="/login/admin" className="py-2 px-2 mx-1 font-medium text-white rounded hover:bg-[#5C655C] hover:text-white transition duration-300">Clientes</a>
+              <a href="/admin/gestion-clientes" className="py-2 px-2 mx-1 font-medium text-white rounded hover:bg-[#5C655C] hover:text-white transition duration-300">Clientes</a>
               </>
             )}
             {isLoggedIn ? (

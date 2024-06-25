@@ -8,12 +8,12 @@ function CardContainer() {
           <div className="p-4 md:w-1/3">
             <div className="h-7/8 border-2 border-[#49494999] border-opacity-60 rounded-lg overflow-hidden bg-[#494D47]">
               <div className="relative">
-                <img className="lg:h-48 md:h-36 w-full object-cover object-center" src="/card1.jpg" alt="blog" />
+                <img className="lg:h-48 md:h-36 w-full object-cover object-center" src="/card1.webp" alt="blog" />
                 <div className="absolute inset-0 bg-black opacity-50"></div>
               </div>
               <div className="p-6">
                 <h2 className="tracking-widest text-xs title-font font-medium text-gray-300 mb-1">INFORMACIÓN</h2>
-                <h1 className="title-font text-lg font-medium text-gray-900 mb-3 text-black">Nuestras Máquinas</h1>
+                <h1 className="title-font text-lg font-medium text-black mb-3 text-black">Nuestras Máquinas</h1>
                 <p className="leading-relaxed mb-3 text-white">Descubre la excelencia en cada taza con nuestras máquinas de café de última generación. Diseñadas para extraer el máximo sabor y aroma.</p>
                 <div className="flex items-center flex-wrap">
                   <a className="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0">Conocer más
@@ -40,7 +40,7 @@ function CardContainer() {
           <div className="p-4 md:w-1/3">
             <div className="h-7/8 border-2 border-[#49494999] border-opacity-60 rounded-lg overflow-hidden bg-[#494D47]">
               <div className="relative">
-                <img className="lg:h-48 md:h-36 w-full object-cover object-center" src="/card2.jpg" alt="blog" />
+                <img className="lg:h-48 md:h-36 w-full object-cover object-center" src="/card2.webp" alt="blog" />
                 <div className="absolute inset-0 bg-black opacity-50"></div>
               </div>
               <div className="p-6">
@@ -72,7 +72,7 @@ function CardContainer() {
           <div className="p-4 md:w-1/3">
             <div className="h-7/8 border-2 border-[#49494999] border-opacity-60 rounded-lg overflow-hidden bg-[#494D47]">
               <div className="relative">
-                <img className="lg:h-48 md:h-36 w-full object-cover object-center" src="/card3.jpg" alt="blog" />
+                <img className="lg:h-48 md:h-36 w-full object-cover object-center" src="/card3.webp" alt="blog" />
                 <div className="absolute inset-0 bg-black opacity-50"></div>
               </div>
               <div className="p-6">

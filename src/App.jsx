@@ -5,6 +5,7 @@ import Inicio from './Pages/Inicio';
 import Login from './Pages/Login';
 import Register from './Pages/Register';
 import GestionCoffees from './Pages/GestionCoffees';
+import GestionClientes from './Pages/GestionClientes';
 
 export const LoginContext = createContext({});
 
@@ -26,6 +27,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/admin/gestion-coffees" element={<GestionCoffees />} />
+            <Route path="/admin/gestion-clientes" element={<GestionClientes />} />
           </Routes>
         </BrowserRouter>
       </LoginContext.Provider>

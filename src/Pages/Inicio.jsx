@@ -9,7 +9,7 @@ function Inicio() {
       <Navbar />
       <main className="flex-grow bg-[#6A6D69] flex flex-col justify-center items-center relative">
         <div className="relative w-full h-full">
-          <img className='h-auto w-full object-cover' src="/coffee-background2.png" />
+          <img className='h-auto w-full object-cover' src="/coffee-background2.webp" />
           <div className="bg-black opacity-80 absolute inset-0"></div>
           <div className="absolute inset-0 flex flex-col justify-center items-center z-10 text-white">
             <h1 className="text-8xl font-bold text-[#DFDFDF]">Pacheco's Coffee Shop</h1>
@@ -17,10 +17,10 @@ function Inicio() {
           </div>
         </div>
         <div className="bg-[#494D47] p-4 w-full h-20 flex items-center justify-evenly">
-        <img className='h-auto w-32 object-cover' src="/cruzeiro_coffee.png" />
-        <img className='h-auto w-14 object-cover' src="/marley_coffee.png" />
-        <img className='h-auto w-32 object-cover' src="/nescafe_coffee.png" />
-        <img className='h-auto w-24 object-cover' src="/native_coffee.png" />
+        <img className='h-auto w-32 object-cover' src="/cruzeiro_coffee.webp" />
+        <img className='h-auto w-14 object-cover' src="/marley_coffee.webp" />
+        <img className='h-auto w-32 object-cover' src="/nescafe_coffee.webp" />
+        <img className='h-auto w-24 object-cover' src="/native_coffee.webp" />
         </div>
         <CardContainerComponent />
       </main>

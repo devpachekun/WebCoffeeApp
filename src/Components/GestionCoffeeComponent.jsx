@@ -2,122 +2,75 @@ import React from 'react'
 
 function GestionCoffeesComponent() {
   return (
-    <div className='flex justify-evenly'>
-        <div className="lg:w-1/4 md:w-1/2 bg-[#494D47] rounded-lg p-8 flex flex-col w-full mt-10 md:mt-0">
+    <div className="grid grid-flow-row-dense grid-cols-3 grid-rows-1 m-24 p-8">
+        <div className="col-span-1 m-2">
+            <div className="w-full bg-[#494D47] rounded-lg p-8 flex flex-col w-full mt-10 md:mt-0">
             <h2 className="text-white text-lg font-medium title-font mb-5">Nuevo Coffee</h2>
             <div className="relative mb-4">
-                <label htmlFor="username" className="leading-7 text-sm text-white">Nombre del Coffee</label>
-                <input type="text" id="username" name="username" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                <label htmlFor="coffee-name" className="leading-7 text-sm text-white">Nombre del Coffee</label>
+                <input type="text" id="coffee-name" name="coffee-name" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
             </div>
             <div className="relative mb-4">
-                <label htmlFor="email" className="leading-7 text-sm text-white">Descripción</label>
-                <input type="email" id="email" name="email" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                <label htmlFor="coffee-description" className="leading-7 text-sm text-white">Descripción</label>
+                <input type="text" id="coffee-description" name="coffee-description" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
             </div>
             <div className="relative mb-4">
-                <label htmlFor="password" className="leading-7 text-sm text-white">Precio</label>
-                <input type="password" id="password" name="password" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                <label htmlFor="coffee-price" className="leading-7 text-sm text-white">Precio</label>
+                <input type="text" id="coffee-price" name="coffee-price" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
             </div>
             <div className="relative mb-4">
-                <label htmlFor="confirm-password" className="leading-7 text-sm text-white">Imagen</label>
-                <input type="file" id="img" name="img" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" accept="image/*"></input>
+                <label htmlFor="coffee-image" className="leading-7 text-sm text-white">Foto</label>
+                <input type="file" id="coffee-image" name="coffee-image" className='w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out' accept="image/*" />
             </div>
             <button className="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Crear</button>
         </div>
-        <div className=''>
-            <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 ">
-                <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+        </div>
+        <div className="col-span-2 flex-grow m-2 bg-[#494D47] rounded-lg border-2 border-[#494D47]">
+            <table className="w-full">
+                <thead>
                     <tr>
-                        <th scope="col" class="px-6 py-3 bg-[#494D47]">
-                            Product name
-                        </th>
-                        <th scope="col" class="px-6 py-3 bg-[#494D47]">
-                            Color
-                        </th>
-                        <th scope="col" class="px-6 py-3 bg-[#494D47]">
-                            Category
-                        </th>
-                        <th scope="col" class="px-6 py-3 bg-[#494D47]">
-                            Price
-                        </th>
-                        <th scope="col" class="px-6 py-3 bg-[#494D47]">
-                            Action
-                        </th>
+                        <th className='bg-[#494D47] p-2 rounded-tl-lg text-white'>ID</th>
+                        <th className='bg-[#494D47] p-2 rounded-tl-lg text-white'>Nombre</th>
+                        <th className='bg-[#494D47] p-2 text-white'>Descripción</th>
+                        <th className='bg-[#494D47] p-2 rounded-tr-lg text-white'>Precio</th>
+                        <th className='bg-[#494D47] p-2 rounded-tr-lg text-white'>Acciones</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
-                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            Apple MacBook Pro 17"
-                        </th>
-                        <td class="px-6 py-4">
-                            Silver
-                        </td>
-                        <td class="px-6 py-4">
-                            Laptop
-                        </td>
-                        <td class="px-6 py-4">
-                            $2999
-                        </td>
-                        <td class="px-6 py-4">
-                            <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                <tbody className='text-center'>
+                    <tr className='bg-[#6A6D69]'>
+                        <td>1</td>
+                        <td>The Sliding Mr. Bones (Next Stop, Pottersville)</td>
+                        <td>Malcolm Lockyer</td>
+                        <td>1961</td>
+                        <td>
+                            <button className='bg-white border-2 border-[#000]'>Editar</button>
+                            <button className='bg-white border-2 border-[#000]'>Borrar</button>
                         </td>
                     </tr>
-                    <tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
-                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            Microsoft Surface Pro
-                        </th>
-                        <td class="px-6 py-4">
-                            White
-                        </td>
-                        <td class="px-6 py-4">
-                            Laptop PC
-                        </td>
-                        <td class="px-6 py-4">
-                            $1999
-                        </td>
-                        <td class="px-6 py-4">
-                            <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                    <tr>
+                        <td>2</td>
+                        <td>Witchy Woman</td>
+                        <td>The Eagles</td>
+                        <td>1972</td>
+                        <td>
+                            <button className='bg-white border-2 border-[#000]'>Editar</button>
+                            <button className='bg-white border-2 border-[#000]'>Borrar</button>
                         </td>
                     </tr>
-                    <tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
-                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            Magic Mouse 2
-                        </th>
-                        <td class="px-6 py-4">
-                            Black
-                        </td>
-                        <td class="px-6 py-4">
-                            Accessories
-                        </td>
-                        <td class="px-6 py-4">
-                            $99
-                        </td>
-                        <td class="px-6 py-4">
-                            <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                        </td>
-                    </tr>
-                    <tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
-                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            Google Pixel Phone
-                        </th>
-                        <td class="px-6 py-4">
-                            Gray
-                        </td>
-                        <td class="px-6 py-4">
-                            Phone
-                        </td>
-                        <td class="px-6 py-4">
-                            $799
-                        </td>
-                        <td class="px-6 py-4">
-                            <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                    <tr className='bg-[#6A6D69]'>
+                        <td>3</td>
+                        <td>Shining Star</td>
+                        <td>Earth, Wind, and Fire</td>
+                        <td>1975</td>
+                        <td>
+                            <button className='bg-white border-2 border-[#000]'>Editar</button>
+                            <button className='bg-white border-2 border-[#000]'>Borrar</button>
                         </td>
                     </tr>
                 </tbody>
             </table>
         </div>
     </div>
-
   )
 }
 
