@@ -80,7 +80,7 @@ function LoginComponent() {
   }
 
   return (
-    <div className="lg:w-1/4 md:w-1/2 bg-[#979f90] rounded-lg p-8 flex flex-col w-full mt-10 md:mt-0">
+    <div className="lg:w-1/4 md:w-1/2 bg-[#494D47] rounded-lg p-8 flex flex-col w-full mt-10 md:mt-0">
         <h2 className="text-white text-lg font-medium title-font mb-5">Iniciar Sesión</h2>
         <form onSubmit={login}>
           <div className="relative mb-4">
@@ -110,7 +110,7 @@ function LoginComponent() {
           <button type="submit" className="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Acceder</button>
           <p className="text-xs text-white mt-3">¿No posees cuenta? <span><strong><a href="/register">Regístrate</a></strong></span></p>
         </form>
-    </div>
+    </div> 
   )
 }
 

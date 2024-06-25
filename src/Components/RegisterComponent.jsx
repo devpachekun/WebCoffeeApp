@@ -2,7 +2,7 @@ import React from 'react'
 
 function RegisterComponent() {
   return (
-    <div class="lg:w-1/4 md:w-1/2 bg-[#979f90] rounded-lg p-8 flex flex-col w-full mt-10 md:mt-0">
+    <div class="lg:w-1/4 md:w-1/2 bg-[#494D47] rounded-lg p-8 flex flex-col w-full mt-10 md:mt-0">
         <h2 class="text-white text-lg font-medium title-font mb-5">Formulario de Registro</h2>
         <div class="relative mb-4">
             <label for="username" class="leading-7 text-sm text-white">Username</label>

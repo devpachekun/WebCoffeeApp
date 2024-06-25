@@ -7,7 +7,7 @@ function CardContainer() {
       <div className="container px-5 py-8 mx-auto">
         <div className="flex flex-wrap -m-4">
           <div className="p-4 md:w-1/3">
-            <div className="h-7/8 border-2 border-[#49494999] border-opacity-60 rounded-lg overflow-hidden bg-[#979f90]">
+            <div className="h-7/8 border-2 border-[#49494999] border-opacity-60 rounded-lg overflow-hidden bg-[#494D47]">
               <div className="relative">
                 <img className="lg:h-48 md:h-36 w-full object-cover object-center" src="/card1.jpg" alt="blog" />
                 <div className="absolute inset-0 bg-black opacity-50"></div>
@@ -39,7 +39,7 @@ function CardContainer() {
             </div>
           </div>
           <div className="p-4 md:w-1/3">
-            <div className="h-7/8 border-2 border-[#49494999] border-opacity-60 rounded-lg overflow-hidden bg-[#979f90]">
+            <div className="h-7/8 border-2 border-[#49494999] border-opacity-60 rounded-lg overflow-hidden bg-[#494D47]">
               <div className="relative">
                 <img className="lg:h-48 md:h-36 w-full object-cover object-center" src="/card2.jpg" alt="blog" />
                 <div className="absolute inset-0 bg-black opacity-50"></div>
@@ -71,7 +71,7 @@ function CardContainer() {
             </div>
           </div>
           <div className="p-4 md:w-1/3">
-            <div className="h-7/8 border-2 border-[#49494999] border-opacity-60 rounded-lg overflow-hidden bg-[#979f90]">
+            <div className="h-7/8 border-2 border-[#49494999] border-opacity-60 rounded-lg overflow-hidden bg-[#494D47]">
               <div className="relative">
                 <img className="lg:h-48 md:h-36 w-full object-cover object-center" src="/card3.jpg" alt="blog" />
                 <div className="absolute inset-0 bg-black opacity-50"></div>

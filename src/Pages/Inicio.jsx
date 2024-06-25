@@ -16,8 +16,11 @@ function Inicio() {
             <p className="text-xl text-[#C7C7C7]">El verdadero sabor del Café</p>
           </div>
         </div>
-        <div className="bg-[#979f90] p-4 w-full h-20 flex items-center justify-center">
-          Hola
+        <div className="bg-[#494D47] p-4 w-full h-20 flex items-center justify-evenly">
+        <img className='h-auto w-32 object-cover' src="/cruzeiro_coffee.png" />
+        <img className='h-auto w-14 object-cover' src="/marley_coffee.png" />
+        <img className='h-auto w-32 object-cover' src="/nescafe_coffee.png" />
+        <img className='h-auto w-24 object-cover' src="/native_coffee.png" />
         </div>
         <CardContainerComponent />
       </main>
