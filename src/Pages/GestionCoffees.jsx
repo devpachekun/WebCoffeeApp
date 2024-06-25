@@ -13,7 +13,7 @@ function GestionsCoffee() {
         </div>
       </main>
       <Footer />
-  </div>
+    </div>
   )
 }
 
