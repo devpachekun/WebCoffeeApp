@@ -1,106 +1,48 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
+import CoffeeCardComponent from './CoffeeCardComponent';
 
 function CoffeesComponent() {
+  const [coffees, setCoffees] = useState([]);
+  const accessToken = localStorage.getItem('access');
+  const API_URL = import.meta.env.VITE_API_URL;
+
+  useEffect(() => {
+    async function getCoffees() {
+      try {
+        const response = await fetch(`${API_URL}/get-coffees/`, {
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        });
+        const data = await response.json();
+        setCoffees(data);
+      } catch (error) {
+        console.error('ERROR al obtener los Coffees:', error);
+      }
+    }
+
+    getCoffees();
+  }, [API_URL, accessToken]);
+
   return (
     <div className='flex justify-center'>
-      <div className='lg w-xl  h-full'>
-        <section class="text-gray-600 body-font">
-          <div class="container px-5 py-20 mx-auto">
-            <div class="flex flex-wrap -m-4">
-              <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
-                <a class="block relative h-48 rounded overflow-hidden">
-                  <img alt="ecommerce" class="object-cover object-center w-full h-full block" src="https://dummyimage.com/420x260" />
-                </a>
-                <div class="mt-4 flex flex-col">
-                  <h3 class="text-black text-xs tracking-widest title-font mb-1">CATEGORY</h3>
-                  <h2 class="text-white title-font text-lg font-medium">The Catalyzer</h2>
-                  <p class="mt-1">$16.00</p>
-                  <button className='bg-[#494D47] rounded-md p-1 text-white my-2'>Opiniones</button>
-                </div>
-              </div>
-              <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
-                <a class="block relative h-48 rounded overflow-hidden">
-                  <img alt="ecommerce" class="object-cover object-center w-full h-full block" src="https://dummyimage.com/421x261" />
-                </a>
-                <div class="mt-4 flex flex-col">
-                  <h3 class="text-black text-xs tracking-widest title-font mb-1">CATEGORY</h3>
-                  <h2 class="text-white title-font text-lg font-medium">Shooting Stars</h2>
-                  <p class="mt-1">$21.15</p>
-                  <button className='bg-[#494D47] rounded-md p-1 text-white my-2'>Opiniones</button>
-                </div>
-              </div>
-              <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
-                <a class="block relative h-48 rounded overflow-hidden">
-                  <img alt="ecommerce" class="object-cover object-center w-full h-full block" src="https://dummyimage.com/422x262" />
-                </a>
-                <div class="mt-4 flex flex-col">
-                  <h3 class="text-black text-xs tracking-widest title-font mb-1">CATEGORY</h3>
-                  <h2 class="text-white title-font text-lg font-medium">Neptune</h2>
-                  <p class="mt-1">$12.00</p>
-                  <button className='bg-[#494D47] rounded-md p-1 text-white my-2'>Opiniones</button>
-                </div>
-              </div>
-              <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
-                <a class="block relative h-48 rounded overflow-hidden">
-                  <img alt="ecommerce" class="object-cover object-center w-full h-full block" src="https://dummyimage.com/423x263" />
-                </a>
-                <div class="mt-4 flex flex-col">
-                  <h3 class="text-black text-xs tracking-widest title-font mb-1">CATEGORY</h3>
-                  <h2 class="text-white title-font text-lg font-medium">The 400 Blows</h2>
-                  <p class="mt-1">$18.40</p>
-                  <button className='bg-[#494D47] rounded-md p-1 text-white my-2'>Opiniones</button>
-                </div>
-              </div>
-              <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
-                <a class="block relative h-48 rounded overflow-hidden">
-                  <img alt="ecommerce" class="object-cover object-center w-full h-full block" src="https://dummyimage.com/424x264" />
-                </a>
-                <div class="mt-4 flex flex-col">
-                  <h3 class="text-black text-xs tracking-widest title-font mb-1">CATEGORY</h3>
-                  <h2 class="text-white title-font text-lg font-medium">The Catalyzer</h2>
-                  <p class="mt-1">$16.00</p>
-                  <button className='bg-[#494D47] rounded-md p-1 text-white my-2'>Opiniones</button>
-                </div>
-              </div>
-              <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
-                <a class="block relative h-48 rounded overflow-hidden">
-                  <img alt="ecommerce" class="object-cover object-center w-full h-full block" src="https://dummyimage.com/425x265" />
-                </a>
-                <div class="mt-4 flex flex-col">
-                  <h3 class="text-black text-xs tracking-widest title-font mb-1">CATEGORY</h3>
-                  <h2 class="text-white title-font text-lg font-medium">Shooting Stars</h2>
-                  <p class="mt-1">$21.15</p>
-                  <button className='bg-[#494D47] rounded-md p-1 text-white my-2'>Opiniones</button>
-                </div>
-              </div>
-              <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
-                <a class="block relative h-48 rounded overflow-hidden">
-                  <img alt="ecommerce" class="object-cover object-center w-full h-full block" src="https://dummyimage.com/427x267" />
-                </a>
-                <div class="mt-4 flex flex-col">
-                  <h3 class="text-black text-xs tracking-widest title-font mb-1">CATEGORY</h3>
-                  <h2 class="text-white title-font text-lg font-medium">Neptune</h2>
-                  <p class="mt-1">$12.00</p>
-                  <button className='bg-[#494D47] rounded-md p-1 text-white my-2'>Opiniones</button>
-                </div>
-              </div>
-              <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
-                <a class="block relative h-48 rounded overflow-hidden">
-                  <img alt="ecommerce" class="object-cover object-center w-full h-full block" src="https://dummyimage.com/428x268" />
-                </a>
-                <div class="mt-4 flex flex-col">
-                  <h3 class="text-black text-xs tracking-widest title-font mb-1">CATEGORY</h3>
-                  <h2 class="text-white title-font text-lg font-medium">The 400 Blows</h2>
-                  <p class="mt-1">$18.40</p>
-                  <button className='bg-[#494D47] rounded-md p-1 text-white my-2'>Opiniones</button>
-                </div>
-              </div>
+      <div className='w-full'>
+        <section className="text-gray-600 body-font">
+          <div className="container px-5 py-20 mx-auto">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+              {coffees.map((coffee) => (
+                <CoffeeCardComponent
+                  key={coffee.id_coffee}
+                  title={coffee.name}
+                  price={coffee.price}
+                />
+              ))}
             </div>
           </div>
         </section>
       </div>
     </div>
-  )
+  );
 }
 
-export default CoffeesComponent
+export default CoffeesComponent;
