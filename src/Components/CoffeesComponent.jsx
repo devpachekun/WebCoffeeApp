@@ -29,7 +29,7 @@ function CoffeesComponent() {
       <div className='w-full'>
         <section className="text-gray-600 body-font">
           <div className="container px-5 py-20 mx-auto">
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4">
               {coffees.map((coffee) => (
                 <CoffeeCardComponent
                   key={coffee.id_coffee}

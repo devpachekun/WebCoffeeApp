@@ -80,7 +80,7 @@ function LoginComponent() {
   }
 
   return (
-    <div className="xl:w-1/3 lg:w-1/2 md:w-1/2 sm:w-3/4 w-3/4 bg-[#494D47] rounded-lg p-8 flex flex-col w-full mt-10 md:mt-0">
+    <div className="xl:w-1/4 lg:w-1/2 md:w-1/2 sm:w-3/4 w-3/4 bg-[#494D47] rounded-lg p-8 flex flex-col w-full mt-10 md:mt-0">
         <h2 className="text-white text-lg font-medium title-font mb-5">Iniciar Sesión</h2>
         <form onSubmit={login}>
           <div className="relative mb-4">
