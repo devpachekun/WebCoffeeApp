@@ -9,7 +9,7 @@ function CoffeeCardComponent({ title, price }) {
       <div className="mt-4 flex flex-col">
         <h3 className="text-black text-xs tracking-widest title-font mb-1">DE SELECCIÓN</h3>
         <h2 className="text-white title-font text-lg font-medium">{title}</h2>
-        <p className="mt-1 text-[#fff5b1]">${price}</p>
+        <p className="mt-1 text-[#fff5b1]">$ {price}</p>
         <button className='bg-[#494D47] rounded-md p-1 text-white my-2'>Opiniones</button>
       </div>
     </div>

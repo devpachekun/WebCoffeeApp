@@ -1,6 +1,8 @@
 import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { LoginContext } from '../App';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function LoginComponent() {
 
@@ -53,6 +55,7 @@ function LoginComponent() {
         return response.json();
       })
       .then((data) => {
+        toast.success('Sesión iniciada correctamente');
         localStorage.setItem('access', data.access);
         localStorage.setItem('refresh', data.refresh);
 
@@ -66,21 +69,25 @@ function LoginComponent() {
 
         setLoggedIn(true);
 
-        if (payloadObject.rol === 'USUARIO') {
-          navigate('/');
-        } else {
-          navigate('/');
-        }
+        setTimeout(() => {
+          if (payloadObject.rol === 'USUARIO') {
+            navigate('/');
+          } else {
+            navigate('/');
+          }
+        }, 3300);
       })
       .catch((error) => {
         console.error('Error al realizar la solicitud', error);
         setServerError(error.message);
         setErrors((prevErrors) => ({ ...prevErrors, form: 'Error al iniciar sesión.' }));
+        toast.error('¡Ups! Correo y/o contraseña incorrectos');
       });
   }
 
   return (
     <div className="xl:w-1/4 lg:w-1/2 md:w-1/2 sm:w-3/4 w-3/4 bg-[#494D47] rounded-lg p-8 flex flex-col w-full mt-10 md:mt-0">
+      <ToastContainer autoClose={2500} hideProgressBar={true} newestOnTop />
         <h2 className="text-white text-lg font-medium title-font mb-5">Iniciar Sesión</h2>
         <form onSubmit={login}>
           <div className="relative mb-4">

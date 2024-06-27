@@ -1,13 +1,12 @@
-import React from 'react';
-import { LoginContext } from '../../App';
-import { useState, useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { LoginContext } from '../../App';
 
 function Navbar() {
-
   const [isLoggedIn, setIsLoggedIn] = useContext(LoginContext);
   const navigate = useNavigate();
   const userRole = getUserRole();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   function getUserRole() {
     return localStorage.getItem('rol');  // Obtiene el rol del usuario del localStorage
@@ -27,29 +26,53 @@ function Navbar() {
             <img src="/logo_pachecos_coffee_shop.webp" alt="logo-coffee-shop" className="h-12" />
             <div className="text-white text-xl">Pacheco's Coffee Shop</div>
           </div>
-          <div>
+          <div className="hidden lg:flex">
             <a href="/" className="py-2 px-2 mx-1 font-medium text-white rounded hover:bg-[#5C655C] hover:text-white transition duration-300">Inicio</a>
             <a href="/coffees" className="py-2 px-2 mx-1 font-medium text-white rounded hover:bg-[#5C655C] hover:text-white transition duration-300">Coffees</a>
             <a href="#" className="py-2 px-2 font-medium text-white rounded hover:bg-[#5C655C] hover:text-white transition duration-300">Acerca de</a>
             {userRole === 'ADMIN' && (
               <>
-              <a href="/admin/gestion-coffees" className="py-2 px-2 mx-1 font-medium text-white rounded hover:bg-[#5C655C] hover:text-white transition duration-300">Gestión Coffees</a>
-              <a href="/admin/gestion-clientes" className="py-2 px-2 mx-1 font-medium text-white rounded hover:bg-[#5C655C] hover:text-white transition duration-300">Clientes</a>
+                <a href="/admin/gestion-coffees" className="py-2 px-2 mx-1 font-medium text-white rounded hover:bg-[#5C655C] hover:text-white transition duration-300">Gestión Coffees</a>
+                <a href="/admin/gestion-clientes" className="py-2 px-2 mx-1 font-medium text-white rounded hover:bg-[#5C655C] hover:text-white transition duration-300">Clientes</a>
               </>
             )}
             {isLoggedIn ? (
-              <a href="/" onClick={Logout} className="py-2 px-2 mx-1 font-medium text-white rounded hover:bg-[#5C655C] hover:text-white transition duration-300">
-                Salir
-              </a>
+              <a href="/" onClick={Logout} className="py-2 px-2 mx-1 font-medium text-white rounded hover:bg-[#5C655C] hover:text-white transition duration-300">Salir</a>
             ) : (
               <>
-              <a href="/login" className="py-2 px-2 mx-1 font-medium text-white rounded hover:bg-[#5C655C] hover:text-white transition duration-300">Iniciar Sesión</a>
-              <a href="/register" className="py-2 px-2 mx-1 font-medium text-white rounded hover:bg-[#5C655C] hover:text-white transition duration-300">Registrarse</a>
+                <a href="/login" className="py-2 px-2 mx-1 font-medium text-white rounded hover:bg-[#5C655C] hover:text-white transition duration-300">Iniciar Sesión</a>
+                <a href="/register" className="py-2 px-2 mx-1 font-medium text-white rounded hover:bg-[#5C655C] hover:text-white transition duration-300">Registrarse</a>
               </>
             )}
           </div>
+          <div className="lg:hidden">
+            <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="focus:outline-none">
+              <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg>
+            </button>
+          </div>
         </div>
       </div>
+      {isMenuOpen && (
+        <div className="lg:hidden mt-4 text-center">
+          <a href="/" className="block py-2 px-4 text-white hover:bg-[#5C655C] transition duration-300">Inicio</a>
+          <a href="/coffees" className="block py-2 px-4 text-white hover:bg-[#5C655C] transition duration-300">Coffees</a>
+          <a href="#" className="block py-2 px-4 text-white hover:bg-[#5C655C] transition duration-300">Acerca de</a>
+          {userRole === 'ADMIN' && (
+            <>
+              <a href="/admin/gestion-coffees" className="block py-2 px-4 text-white hover:bg-[#5C655C] transition duration-300">Gestión Coffees</a>
+              <a href="/admin/gestion-clientes" className="block py-2 px-4 text-white hover:bg-[#5C655C] transition duration-300">Clientes</a>
+            </>
+          )}
+          {isLoggedIn ? (
+            <a href="/" onClick={Logout} className="block py-2 px-4 text-white hover:bg-[#5C655C] transition duration-300">Salir</a>
+          ) : (
+            <>
+              <a href="/login" className="block py-2 px-4 text-white hover:bg-[#5C655C] transition duration-300">Iniciar Sesión</a>
+              <a href="/register" className="block py-2 px-4 text-white hover:bg-[#5C655C] transition duration-300">Registrarse</a>
+            </>
+          )}
+        </div>
+      )}
     </nav>
   );
 }
