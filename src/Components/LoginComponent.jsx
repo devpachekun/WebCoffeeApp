@@ -75,7 +75,7 @@ function LoginComponent() {
           } else {
             navigate('/');
           }
-        }, 3300);
+        }, 2000);
       })
       .catch((error) => {
         console.error('Error al realizar la solicitud', error);
@@ -87,7 +87,7 @@ function LoginComponent() {
 
   return (
     <div className="xl:w-1/4 lg:w-1/2 md:w-1/2 sm:w-3/4 w-3/4 bg-[#494D47] rounded-lg p-8 flex flex-col w-full mt-10 md:mt-0">
-      <ToastContainer autoClose={2500} hideProgressBar={true} newestOnTop />
+      <ToastContainer autoClose={1500} hideProgressBar={true} newestOnTop />
         <h2 className="text-white text-lg font-medium title-font mb-5">Iniciar Sesión</h2>
         <form onSubmit={login}>
           <div className="relative mb-4">
