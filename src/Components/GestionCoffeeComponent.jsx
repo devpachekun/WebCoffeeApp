@@ -8,6 +8,7 @@ function GestionCoffeesComponent() {
     const [coffeeName, setCoffeeName] = useState('');
     const [coffeeDescription, setCoffeeDescription] = useState('');
     const [coffeePrice, setCoffeePrice] = useState('');
+    const [coffeeImage, setCoffeeImage] = useState(null); // Estado para la imagen en base64
     const [editMode, setEditMode] = useState(false);
     const [editCoffeeId, setEditCoffeeId] = useState(null);
 
@@ -34,14 +35,28 @@ function GestionCoffeesComponent() {
         getCoffees();
     }, [API_URL, accessToken]);
 
+    const handleImageChange = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                setCoffeeImage(reader.result); // Almacena la imagen en base64 en el estado
+            };
+            reader.readAsDataURL(file);
+        }
+    };
+
     const postCoffee = async (e) => {
         e.preventDefault();
 
         const newCoffee = {
             name: coffeeName,
             description: coffeeDescription,
-            price: coffeePrice
+            price: coffeePrice,
+            image64: coffeeImage // Agrega la imagen base64 al objeto del nuevo coffee
         };
+
+        console.log(newCoffee)
 
         try {
             const response = await fetch(`${API_URL}/admin/coffees/`, {
@@ -59,6 +74,7 @@ function GestionCoffeesComponent() {
                 setCoffeeName('');
                 setCoffeeDescription('');
                 setCoffeePrice('');
+                setCoffeeImage(null); // Limpia el estado de la imagen después del POST
                 toast.success('Coffee creado correctamente');
             } else {
                 console.error('Error al crear el nuevo Coffee:', response.statusText);
@@ -76,7 +92,8 @@ function GestionCoffeesComponent() {
         const updatedCoffee = {
             name: coffeeName,
             description: coffeeDescription,
-            price: coffeePrice
+            price: coffeePrice,
+            image: coffeeImage // Agrega la imagen base64 al objeto del coffee actualizado
         };
 
         try {
@@ -95,6 +112,7 @@ function GestionCoffeesComponent() {
                 setCoffeeName('');
                 setCoffeeDescription('');
                 setCoffeePrice('');
+                setCoffeeImage(null); // Limpia el estado de la imagen después de la edición
                 setEditMode(false);
                 setEditCoffeeId(null);
                 toast.info('Coffee editado correctamente');
@@ -183,14 +201,20 @@ function GestionCoffeesComponent() {
                         </div>
                         <div className="relative mb-4">
                             <label htmlFor="coffee-image" className="leading-7 text-sm text-white">Foto</label>
-                            <input type="file" id="coffee-image" name="coffee-image" className='w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out' accept="image/*" />
+                            <input
+                                type="file"
+                                id="coffee-image"
+                                name="coffee-image"
+                                className='w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out'
+                                accept="image/*"
+                                onChange={handleImageChange} // Maneja el cambio de la imagen
+                            />
                         </div>
                         <button
                             className={`text-white border-0 py-2 px-8 focus:outline-none rounded text-lg ${editMode ? 'bg-yellow-500 hover:bg-yellow-600' : 'bg-indigo-500 hover:bg-indigo-600'}`}
                         >
                             {editMode ? 'Finalizar edición' : 'Crear'}
                         </button>
-
                     </div>
                 </form>
             </div>

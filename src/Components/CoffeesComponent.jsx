@@ -37,6 +37,7 @@ function CoffeesComponent() {
                   key={coffee.id_coffee}
                   title={coffee.name}
                   price={coffee.price}
+                  image64={coffee.image64} // Asegúrate de que el nombre coincida con el campo recibido del backend
                 />
               ))}
             </div>
