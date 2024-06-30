@@ -18,7 +18,7 @@ function GestionCoffeesComponent() {
     useEffect(() => {
         async function getCoffees() {
             try {
-                const response = await fetch(`${API_URL}/admin/coffees/`, {
+                const response = await fetch(`${API_URL}/api/coffee/`, {
                     headers: {
                         'Authorization': `Bearer ${accessToken}`,
                         'Content-Type': 'application/json'

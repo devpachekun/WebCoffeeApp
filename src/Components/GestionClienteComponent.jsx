@@ -12,13 +12,13 @@ function GestionClienteComponent() {
     const [editMode, setEditMode] = useState(false);
     const [editUserId, setEditUserId] = useState(null);
 
-    const accessToken = localStorage.getItem('access');
+    const accessToken = localStorage.getItem('token');
     const API_URL = import.meta.env.VITE_API_URL;
 
     useEffect(() => {
         async function getUsers() {
             try {
-                const response = await fetch(`${API_URL}/admin/users/`, {
+                const response = await fetch(`${API_URL}/api/user/`, {
                     headers: {
                         'Authorization': `Bearer ${accessToken}`,
                         'Content-Type': 'application/json'
@@ -135,8 +135,8 @@ function GestionClienteComponent() {
                             <tr key={user.id_usuario} className={index % 2 === 0 ? 'bg-[#6A6D69]' : 'bg-[#494D47]'}>
                                 <td>{user.id_usuario}</td>
                                 <td>{user.username}</td>
-                                <td>{user.correo}</td>
-                                <td>{user.is_active ? 'SI' : 'NO'}</td>
+                                <td>{user.email}</td>
+                                <td>{user.disabled ? 'NO' : 'SI'}</td>
                                 <td>
                                     <button
                                         className='bg-[#EBCA25] border-2 border-[#000] rounded-md px-2 py-1 mx-1'
@@ -144,8 +144,8 @@ function GestionClienteComponent() {
                                             setEditMode(true);
                                             setEditUserId(user.id_usuario);
                                             setUsername(user.username);
-                                            setEmail(user.correo);
-                                            setEnabled(user.is_active);
+                                            setEmail(user.email);
+                                            setEnabled(user.disabled);
                                         }}
                                     >
                                         Editar

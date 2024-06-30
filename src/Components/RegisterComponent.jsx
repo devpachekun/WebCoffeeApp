@@ -1,5 +1,5 @@
 import { React, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -12,7 +12,7 @@ function RegisterComponent() {
     const [errors, setErrors] = useState({});
     const [serverError, setServerError] = useState('');
     
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
     const API_URL = import.meta.env.VITE_API_URL;
 
     function validateForm() {
