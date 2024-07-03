@@ -1,22 +1,23 @@
-import React, { useState, useContext } from 'react';
+import React, { useState,useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { LoginContext } from '../../App';
+
+import { AuthContext } from '../../context/AuthContext';
 
 function Navbar() {
-  const [isLoggedIn, setIsLoggedIn] = useContext(LoginContext);
+  // const [isLoggedIn, setIsLoggedIn] = useContext(LoginContext);
   const navigate = useNavigate();
-  const userRole = getUserRole();
+  const {user,logout} = useContext(AuthContext)
+  
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  function getUserRole() {
-    return localStorage.getItem('rol');  // Obtiene el rol del usuario del localStorage
-  }
+  // const Logout = () => {
+  //   localStorage.clear();
+  //   // setIsLoggedIn(false);
+  //   // navigate('/');
+  // };
 
-  const Logout = () => {
-    localStorage.clear();
-    setIsLoggedIn(false);
-    navigate('/');
-  };
+  console.log(user?.rol)
+
 
   return (
     <nav className="bg-[#494D47] p-4">
@@ -24,20 +25,20 @@ function Navbar() {
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-5">
             <img src="/logo_pachecos_coffee_shop.webp" alt="logo-coffee-shop" className="h-12" />
-            <div className="text-white text-xl">Pacheco's Coffee Shop</div>
+            <div className="text-white text-xl">Pacheco&#39;s Coffee Shop</div>
           </div>
           <div className="hidden lg:flex">
             <a href="/" className="py-2 px-2 mx-1 font-medium text-white rounded hover:bg-[#5C655C] hover:text-white transition duration-300">Inicio</a>
             <a href="/coffees" className="py-2 px-2 mx-1 font-medium text-white rounded hover:bg-[#5C655C] hover:text-white transition duration-300">Coffees</a>
             <a href="#" className="py-2 px-2 font-medium text-white rounded hover:bg-[#5C655C] hover:text-white transition duration-300">Acerca de</a>
-            {userRole === 'ADMIN' && (
+            {user?.rol === 'ADMIN' && (
               <>
                 <a href="/admin/gestion-coffees" className="py-2 px-2 mx-1 font-medium text-white rounded hover:bg-[#5C655C] hover:text-white transition duration-300">Gestión Coffees</a>
                 <a href="/admin/gestion-clientes" className="py-2 px-2 mx-1 font-medium text-white rounded hover:bg-[#5C655C] hover:text-white transition duration-300">Clientes</a>
               </>
             )}
-            {isLoggedIn ? (
-              <a href="/" onClick={Logout} className="py-2 px-2 mx-1 font-medium text-white rounded hover:bg-[#5C655C] hover:text-white transition duration-300">Salir</a>
+            { user ? (
+              <a href="/" onClick={logout} className="py-2 px-2 mx-1 font-medium text-white rounded hover:bg-[#5C655C] hover:text-white transition duration-300">Salir</a>
             ) : (
               <>
                 <a href="/login" className="py-2 px-2 mx-1 font-medium text-white rounded hover:bg-[#5C655C] hover:text-white transition duration-300">Iniciar Sesión</a>
@@ -57,14 +58,14 @@ function Navbar() {
           <a href="/" className="block py-2 px-4 text-white hover:bg-[#5C655C] transition duration-300">Inicio</a>
           <a href="/coffees" className="block py-2 px-4 text-white hover:bg-[#5C655C] transition duration-300">Coffees</a>
           <a href="#" className="block py-2 px-4 text-white hover:bg-[#5C655C] transition duration-300">Acerca de</a>
-          {userRole === 'ADMIN' && (
+          {user?.rol === 'ADMIN' && (
             <>
               <a href="/admin/gestion-coffees" className="block py-2 px-4 text-white hover:bg-[#5C655C] transition duration-300">Gestión Coffees</a>
               <a href="/admin/gestion-clientes" className="block py-2 px-4 text-white hover:bg-[#5C655C] transition duration-300">Clientes</a>
             </>
           )}
-          {isLoggedIn ? (
-            <a href="/" onClick={Logout} className="block py-2 px-4 text-white hover:bg-[#5C655C] transition duration-300">Salir</a>
+          {user ? (
+            <a href="/" onClick={logout} className="block py-2 px-4 text-white hover:bg-[#5C655C] transition duration-300">Salir</a>
           ) : (
             <>
               <a href="/login" className="block py-2 px-4 text-white hover:bg-[#5C655C] transition duration-300">Iniciar Sesión</a>

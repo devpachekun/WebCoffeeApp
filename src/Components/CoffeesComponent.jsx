@@ -10,8 +10,10 @@ function CoffeesComponent() {
 
   useEffect(() => {
     async function getCoffees() {
+
+      console.log(API_URL)
       try {
-        const response = await fetch(`${API_URL}/get-coffees/`, {
+        const response = await fetch(`${API_URL}/api/coffee/`, {
           headers: {
             'Content-Type': 'application/json'
           }
@@ -26,6 +28,7 @@ function CoffeesComponent() {
     getCoffees();
   }, [API_URL, accessToken]);
 
+
   return (
     <div className='flex justify-center'>
       <div className='w-full'>
@@ -33,12 +36,15 @@ function CoffeesComponent() {
           <div className="container px-5 py-20 mx-auto">
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4">
               {coffees.map((coffee) => (
-                <CoffeeCardComponent
-                  key={coffee.id_coffee}
-                  title={coffee.name}
-                  price={coffee.price}
-                  image64={coffee.image64} // Asegúrate de que el nombre coincida con el campo recibido del backend
-                />
+                  
+                  <React.Fragment key={coffee.idCoffee}>
+                    <CoffeeCardComponent
+                      title={coffee.name}
+                      price={coffee.price}
+                      image64={coffee.image64} // Asegúrate de que el nombre coincida con el campo recibido del backend
+                      description={coffee.description}
+                  />
+                  </React.Fragment>
               ))}
             </div>
           </div>
