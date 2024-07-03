@@ -12,7 +12,7 @@ function GestionCoffeesComponent() {
     const [editMode, setEditMode] = useState(false);
     const [editCoffeeId, setEditCoffeeId] = useState(null);
 
-    const accessToken = localStorage.getItem('access');
+    const accessToken = localStorage.getItem('token');
     const API_URL = import.meta.env.VITE_API_URL;
 
     useEffect(() => {
@@ -26,6 +26,7 @@ function GestionCoffeesComponent() {
                 });
                 const data = await response.json();
                 setCoffees(data);
+                
             } catch (error) {
                 console.error('ERROR al obtener los Coffees:', error);
                 toast.error('Ha ocurrido un error al obtener los Coffees');
@@ -96,8 +97,10 @@ function GestionCoffeesComponent() {
             image: coffeeImage // Agrega la imagen base64 al objeto del coffee actualizado
         };
 
+        console.log(updatedCoffee)
+
         try {
-            const response = await fetch(`${API_URL}/admin/coffees/${editCoffeeId}/`, {
+            const response = await fetch(`${API_URL}/api/coffee/${editCoffeeId}/`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
@@ -108,7 +111,7 @@ function GestionCoffeesComponent() {
 
             if (response.ok) {
                 const data = await response.json();
-                setCoffees(coffees.map(coffee => coffee.id_coffee === editCoffeeId ? data : coffee));
+                setCoffees(coffees.map(coffee => coffee.idCoffee === editCoffeeId ? data : coffee));
                 setCoffeeName('');
                 setCoffeeDescription('');
                 setCoffeePrice('');
@@ -137,7 +140,7 @@ function GestionCoffeesComponent() {
             });
 
             if (response.ok) {
-                setCoffees(coffees.filter(coffee => coffee.id_coffee !== id));
+                setCoffees(coffees.filter(coffee => coffee.idCoffee !== id));
                 toast.success('Coffee eliminado correctamente');
             } else {
                 console.error('Error al borrar el Coffee:', response.statusText);
@@ -154,7 +157,7 @@ function GestionCoffeesComponent() {
         setCoffeeDescription(coffee.description);
         setCoffeePrice(coffee.price);
         setEditMode(true);
-        setEditCoffeeId(coffee.id_coffee);
+        setEditCoffeeId(coffee.idCoffee);
     };
 
     return (
@@ -230,28 +233,29 @@ function GestionCoffeesComponent() {
                         </tr>
                     </thead>
                     <tbody className='text-center'>
-                        {coffees.map((coffee, index) => (
-                            <tr key={coffee.id_coffee} className={index % 2 === 0 ? 'bg-[#6A6D69]' : 'bg-[#494D47]'}>
-                                <td>{coffee.id_coffee}</td>
-                                <td>{coffee.name}</td>
-                                <td>{coffee.description}</td>
-                                <td>{coffee.price}</td>
-                                <td>
-                                    <button
-                                        className='bg-[#EBCA25] border-2 border-[#000] rounded-md px-2 py-1 mx-1'
-                                        onClick={() => handleEditClick(coffee)}
-                                    >
-                                        Editar
-                                    </button>
-                                    <button
-                                        className='bg-[#E73E3E] border-2 border-[#000] rounded-md px-2 py-1 mx-1 my-2'
-                                        onClick={() => deleteCoffee(coffee.id_coffee)}
-                                    >
-                                        Borrar
-                                    </button>
-                                </td>
-                            </tr>
-                        ))}
+                    {coffees.map((coffee, index) => (
+                        <tr key={coffee.idCoffee} className={index % 2 === 0 ? 'bg-[#6A6D69]' : 'bg-[#494D47]'}>
+                            <td>{coffee.idCoffee}</td>
+                            <td>{coffee.name}</td>
+                            <td>{coffee.description}</td>
+                            <td>{coffee.price}</td>
+                            <td>
+                                <button
+                                    className='bg-[#EBCA25] border-2 border-[#000] rounded-md px-2 py-1 mx-1'
+                                    onClick={() => handleEditClick(coffee)}
+                                >
+                                    Editar
+                                </button>
+                                <button
+                                    className='bg-[#E73E3E] border-2 border-[#000] rounded-md px-2 py-1 mx-1 my-2'
+                                    onClick={() => deleteCoffee(coffee.idCoffee)}
+                                >
+                                    Borrar
+                                </button>
+                            </td>
+                        </tr>
+                    ))}
+
                     </tbody>
                 </table>
             </div>
