@@ -93,14 +93,13 @@ function GestionCoffeesComponent() {
         const updatedCoffee = {
             name: coffeeName,
             description: coffeeDescription,
-            price: coffeePrice,
-            image: coffeeImage // Agrega la imagen base64 al objeto del coffee actualizado
+            price: coffeePrice
         };
 
         console.log(updatedCoffee)
 
         try {
-            const response = await fetch(`${API_URL}/api/coffee/${editCoffeeId}/`, {
+            const response = await fetch(`${API_URL}/api/coffee/${editCoffeeId}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
