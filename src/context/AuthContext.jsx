@@ -50,13 +50,11 @@ export default function AuthProvider({ children }) {
 
         localStorage.setItem('token', data.token)
 
-        setTimeout(() => {
-          if (payloadObject.rol === 'CUSTOMER') {
-            navigate('/');
-          } else {
-            navigate('/admin/gestion-coffees');
-          }
-        }, 2000);
+        if (payloadObject.rol === 'CUSTOMER') {
+          navigate('/');
+        } else {
+          navigate('/admin/gestion-coffees');
+        }
       })
       .catch((error) => {
         console.error('Error al realizar la solicitud', error);

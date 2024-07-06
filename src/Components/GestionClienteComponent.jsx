@@ -123,7 +123,6 @@ function GestionClienteComponent() {
                 <table className="w-full">
                     <thead>
                         <tr>
-                            <th className='bg-[#494D47] p-2 rounded-tl-lg text-white'>ID</th>
                             <th className='bg-[#494D47] p-2 rounded-tl-lg text-white'>Username</th>
                             <th className='bg-[#494D47] p-2 text-white'>Correo</th>
                             <th className='bg-[#494D47] p-2 text-white'>Habilitado</th>
@@ -132,8 +131,7 @@ function GestionClienteComponent() {
                     </thead>
                     <tbody className='text-center'>
                         {users.map((user, index) => (
-                            <tr key={user.id_usuario} className={index % 2 === 0 ? 'bg-[#6A6D69]' : 'bg-[#494D47]'}>
-                                <td>{user.id_usuario}</td>
+                            <tr key={user.username} className={index % 2 === 0 ? 'bg-[#6A6D69]' : 'bg-[#494D47]'}>
                                 <td>{user.username}</td>
                                 <td>{user.email}</td>
                                 <td>{user.disabled ? 'NO' : 'SI'}</td>

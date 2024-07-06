@@ -1,5 +1,6 @@
+// GestionCoffeesComponent.jsx
 import React, { useState, useEffect } from 'react';
-import { toast, ToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 function GestionCoffeesComponent() {
@@ -15,24 +16,24 @@ function GestionCoffeesComponent() {
     const accessToken = localStorage.getItem('token');
     const API_URL = import.meta.env.VITE_API_URL;
 
-    useEffect(() => {
-        async function getCoffees() {
-            try {
-                const response = await fetch(`${API_URL}/api/coffee/`, {
-                    headers: {
-                        'Authorization': `Bearer ${accessToken}`,
-                        'Content-Type': 'application/json'
-                    }
-                });
-                const data = await response.json();
-                setCoffees(data);
-                
-            } catch (error) {
-                console.error('ERROR al obtener los Coffees:', error);
-                toast.error('Ha ocurrido un error al obtener los Coffees');
-            }
+    async function getCoffees() {
+        try {
+            const response = await fetch(`${API_URL}/api/coffee/`, {
+                headers: {
+                    'Authorization': `Bearer ${accessToken}`,
+                    'Content-Type': 'application/json'
+                }
+            });
+            const data = await response.json();
+            setCoffees(data);
+            
+        } catch (error) {
+            console.error('ERROR al obtener los Coffees:', error);
+            toast.error('Ha ocurrido un error al obtener los Coffees');
         }
+    }
 
+    useEffect(() => {
         getCoffees();
     }, [API_URL, accessToken]);
 
@@ -53,14 +54,14 @@ function GestionCoffeesComponent() {
         const newCoffee = {
             name: coffeeName,
             description: coffeeDescription,
-            price: coffeePrice,
+            price: Number(coffeePrice),
             image64: coffeeImage // Agrega la imagen base64 al objeto del nuevo coffee
         };
 
         console.log(newCoffee)
 
         try {
-            const response = await fetch(`${API_URL}/admin/coffees/`, {
+            const response = await fetch(`${API_URL}/api/coffee/`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -70,8 +71,7 @@ function GestionCoffeesComponent() {
             });
 
             if (response.ok) {
-                const data = await response.json();
-                setCoffees([...coffees, data]);
+                getCoffees();
                 setCoffeeName('');
                 setCoffeeDescription('');
                 setCoffeePrice('');
@@ -93,11 +93,9 @@ function GestionCoffeesComponent() {
         const updatedCoffee = {
             name: coffeeName,
             description: coffeeDescription,
-            price: coffeePrice
+            price: Number(coffeePrice),
+            image64: coffeeImage
         };
-
-        console.log(updatedCoffee)
-
         try {
             const response = await fetch(`${API_URL}/api/coffee/${editCoffeeId}`, {
                 method: 'PUT',
@@ -107,10 +105,11 @@ function GestionCoffeesComponent() {
                 },
                 body: JSON.stringify(updatedCoffee)
             });
-
+            console.log(response)
             if (response.ok) {
+                console.log("ENTRANDO OK")
                 const data = await response.json();
-                setCoffees(coffees.map(coffee => coffee.idCoffee === editCoffeeId ? data : coffee));
+                console.log({data})
                 setCoffeeName('');
                 setCoffeeDescription('');
                 setCoffeePrice('');
@@ -118,6 +117,7 @@ function GestionCoffeesComponent() {
                 setEditMode(false);
                 setEditCoffeeId(null);
                 toast.info('Coffee editado correctamente');
+                getCoffees();
             } else {
                 console.error('Error al actualizar el Coffee:', response.statusText);
                 toast.error('Ha ocurrido un error al editar el Coffee');
@@ -130,7 +130,7 @@ function GestionCoffeesComponent() {
 
     const deleteCoffee = async (id) => {
         try {
-            const response = await fetch(`${API_URL}/admin/coffees/${id}/`, {
+            const response = await fetch(`${API_URL}/api/coffee/${id}`, {
                 method: 'DELETE',
                 headers: {
                     'Authorization': `Bearer ${accessToken}`,
@@ -139,7 +139,7 @@ function GestionCoffeesComponent() {
             });
 
             if (response.ok) {
-                setCoffees(coffees.filter(coffee => coffee.idCoffee !== id));
+                getCoffees();
                 toast.success('Coffee eliminado correctamente');
             } else {
                 console.error('Error al borrar el Coffee:', response.statusText);
@@ -162,7 +162,6 @@ function GestionCoffeesComponent() {
     return (
         <div className="grid grid-flow-row-dense grid-cols-3 grid-rows-1 mx-20 p-8">
             <div className="col-span-1 m-2">
-                <ToastContainer autoClose={2000} hideProgressBar={true} newestOnTop />
                 <form onSubmit={editMode ? editCoffee : postCoffee}>
                     <div className="w-full bg-[#494D47] rounded-lg p-8 flex flex-col w-full mt-10 md:mt-0">
                         <h2 className="text-white text-lg font-medium title-font mb-5">

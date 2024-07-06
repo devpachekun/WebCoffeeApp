@@ -13,7 +13,7 @@ function CoffeesComponent() {
 
       console.log(API_URL)
       try {
-        const response = await fetch(`${API_URL}/api/coffee/`, {
+        const response = await fetch(`${API_URL}/api/coffee/getTestimonials`, {
           headers: {
             'Content-Type': 'application/json'
           }
@@ -29,6 +29,8 @@ function CoffeesComponent() {
   }, [API_URL, accessToken]);
 
 
+  
+
   return (
     <div className='flex justify-center'>
       <div className='w-full'>
@@ -39,10 +41,12 @@ function CoffeesComponent() {
                   
                   <React.Fragment key={coffee.idCoffee}>
                     <CoffeeCardComponent
+                      idCoffee={coffee.idCoffee}
                       title={coffee.name}
                       price={coffee.price}
                       image64={coffee.image64} // Asegúrate de que el nombre coincida con el campo recibido del backend
                       description={coffee.description}
+                      testimonials={coffee.testimonials}
                   />
                   </React.Fragment>
               ))}
