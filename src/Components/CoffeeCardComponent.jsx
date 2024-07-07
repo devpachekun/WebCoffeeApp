@@ -63,8 +63,8 @@ function CoffeeCardComponent({ title, price, image64, description, testimonials,
 
   return (
     <div className="p-4 w-full">
-      <a className="block relative h-48 rounded overflow-hidden">
-        <img alt="coffee" className="object-cover object-center w-full h-full block" src={image64} />
+      <a className="block relative h-[350px] rounded overflow-hidden">
+        <img alt="coffee" className="object-fill object-center w-full h-full block" src={image64} />
       </a>
       <div className="mt-4 flex flex-col">
         <h2 className="text-white title-font text-lg font-medium">{title}</h2>
@@ -87,21 +87,21 @@ function CoffeeCardComponent({ title, price, image64, description, testimonials,
             <h1 className="text-3xl font-medium title-font text-white mb-6 mt-12 text-center">Testimonios</h1>
             {hasToken && (
               <div className='p-2'>
-                  <form className='flex gap-2' onSubmit={handleTestimonialSubmit}>
-                    <input 
-                      type="text" 
-                      id="username" 
-                      name="username" 
-                      placeholder='Escriba su reseña...'
-                      value={newTestimonial}
-                      onChange={handleTestimonialChange}
-                      className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                    />
-                    <button type="submit" className='bg-white px-2 rounded-lg'>Enviar</button>
-                  </form>
+                <form className='flex gap-2' onSubmit={handleTestimonialSubmit}>
+                  <input
+                    type="text"
+                    id="username"
+                    name="username"
+                    placeholder='Escriba su reseña...'
+                    value={newTestimonial}
+                    onChange={handleTestimonialChange}
+                    className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                  />
+                  <button type="submit" className='bg-white px-2 rounded-lg'>Enviar</button>
+                </form>
               </div>
             )}
-            <OpinionesComponent 
+            <OpinionesComponent
               testimonials={testimonials}
             />
           </div>
