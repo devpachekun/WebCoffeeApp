@@ -219,14 +219,14 @@ function GestionCoffeesComponent() {
                     </div>
                 </form>
             </div>
-            <div className="col-span-2 flex-grow m-2 bg-[#494D47] rounded-lg border-2 border-[#494D47]">
+            <div className="col-span-2 flex-grow m-2 rounded-lg border-2 border-[#494D47] overflow-y-auto h-5/6">
                 <table className="w-full">
                     <thead>
                         <tr>
                             <th className='bg-[#494D47] p-2 rounded-tl-lg text-white'>ID</th>
-                            <th className='bg-[#494D47] p-2 rounded-tl-lg text-white'>Nombre</th>
+                            <th className='bg-[#494D47] p-2 text-white'>Nombre</th>
                             <th className='bg-[#494D47] p-2 text-white'>Descripción</th>
-                            <th className='bg-[#494D47] p-2 rounded-tr-lg text-white'>Precio</th>
+                            <th className='bg-[#494D47] p-2 text-white'>Precio</th>
                             <th className='bg-[#494D47] p-2 rounded-tr-lg text-white'>Acciones</th>
                         </tr>
                     </thead>

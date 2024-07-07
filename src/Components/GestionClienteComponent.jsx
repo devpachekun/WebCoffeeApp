@@ -1,6 +1,5 @@
 import { React, useState, useEffect } from 'react';
-import { toast, ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-toastify';
 import Switch from './Switch';
 
 function GestionClienteComponent() {
@@ -34,7 +33,6 @@ function GestionClienteComponent() {
   return (
     <div className="grid grid-flow-row-dense grid-cols-3 grid-rows-1 m-24 p-8">
       <div className="col-span-1 m-2">
-        <ToastContainer autoClose={2000} hideProgressBar={true} newestOnTop />
       </div>
       <div className="col-span-full flex-grow m-2 bg-[#494D47] rounded-lg border-2 border-[#494D47]">
         <table className="w-full">

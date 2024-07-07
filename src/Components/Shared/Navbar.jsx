@@ -1,23 +1,14 @@
-import React, { useState,useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-
 import { AuthContext } from '../../context/AuthContext';
 
 function Navbar() {
-  // const [isLoggedIn, setIsLoggedIn] = useContext(LoginContext);
   const navigate = useNavigate();
-  const {user,logout} = useContext(AuthContext)
+  const { user, logout } = useContext(AuthContext);
   
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  // const Logout = () => {
-  //   localStorage.clear();
-  //   // setIsLoggedIn(false);
-  //   // navigate('/');
-  // };
-
-  console.log(user?.rol)
-
+  console.log(user?.rol);
 
   return (
     <nav className="bg-[#494D47] p-4">
@@ -30,14 +21,14 @@ function Navbar() {
           <div className="hidden lg:flex">
             <a href="/" className="py-2 px-2 mx-1 font-medium text-white rounded hover:bg-[#5C655C] hover:text-white transition duration-300">Inicio</a>
             <a href="/coffees" className="py-2 px-2 mx-1 font-medium text-white rounded hover:bg-[#5C655C] hover:text-white transition duration-300">Coffees</a>
-            <a href="#" className="py-2 px-2 font-medium text-white rounded hover:bg-[#5C655C] hover:text-white transition duration-300">Acerca de</a>
+            <a href="/acerca-de" className="py-2 px-2 font-medium text-white rounded hover:bg-[#5C655C] hover:text-white transition duration-300">Acerca de</a>
             {user?.rol === 'ADMIN' && (
               <>
                 <a href="/admin/gestion-coffees" className="py-2 px-2 mx-1 font-medium text-white rounded hover:bg-[#5C655C] hover:text-white transition duration-300">Gestión Coffees</a>
                 <a href="/admin/gestion-clientes" className="py-2 px-2 mx-1 font-medium text-white rounded hover:bg-[#5C655C] hover:text-white transition duration-300">Clientes</a>
               </>
             )}
-            { user ? (
+            {user ? (
               <a href="/" onClick={logout} className="py-2 px-2 mx-1 font-medium text-white rounded hover:bg-[#5C655C] hover:text-white transition duration-300">Salir</a>
             ) : (
               <>
@@ -57,7 +48,7 @@ function Navbar() {
         <div className="lg:hidden mt-4 text-center">
           <a href="/" className="block py-2 px-4 text-white hover:bg-[#5C655C] transition duration-300">Inicio</a>
           <a href="/coffees" className="block py-2 px-4 text-white hover:bg-[#5C655C] transition duration-300">Coffees</a>
-          <a href="#" className="block py-2 px-4 text-white hover:bg-[#5C655C] transition duration-300">Acerca de</a>
+          <a href="/acerca-de" className="block py-2 px-4 text-white hover:bg-[#5C655C] transition duration-300">Acerca de</a>
           {user?.rol === 'ADMIN' && (
             <>
               <a href="/admin/gestion-coffees" className="block py-2 px-4 text-white hover:bg-[#5C655C] transition duration-300">Gestión Coffees</a>
