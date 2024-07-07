@@ -8,23 +8,23 @@ function CoffeesComponent() {
   const accessToken = localStorage.getItem('access');
   const API_URL = import.meta.env.VITE_API_URL;
 
-  useEffect(() => {
-    async function getCoffees() {
+  async function getCoffees() {
 
-      console.log(API_URL)
-      try {
-        const response = await fetch(`${API_URL}/api/coffee/getTestimonials`, {
-          headers: {
-            'Content-Type': 'application/json'
-          }
-        });
-        const data = await response.json();
-        setCoffees(data);
-      } catch (error) {
-        console.error('ERROR al obtener los Coffees:', error);
-      }
+    console.log(API_URL)
+    try {
+      const response = await fetch(`${API_URL}/api/coffee/getTestimonials`, {
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+      const data = await response.json();
+      setCoffees(data);
+    } catch (error) {
+      console.error('ERROR al obtener los Coffees:', error);
     }
+  }
 
+  useEffect(() => {
     getCoffees();
   }, [API_URL, accessToken]);
 
@@ -47,6 +47,7 @@ function CoffeesComponent() {
                       image64={coffee.image64} // Asegúrate de que el nombre coincida con el campo recibido del backend
                       description={coffee.description}
                       testimonials={coffee.testimonials}
+                      getCoffees={getCoffees}
                   />
                   </React.Fragment>
               ))}

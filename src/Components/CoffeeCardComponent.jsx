@@ -1,11 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState,useContext } from 'react';
 import OpinionesComponent from './OpinionesComponent';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { AuthContext } from '../context/AuthContext';
+import {useNavigate} from 'react-router-dom'
 
-function CoffeeCardComponent({ title, price, image64, description, testimonials, idCoffee }) {
+function CoffeeCardComponent({ title, price, image64, description, testimonials, idCoffee,getCofees }) {
   const [showOpiniones, setShowOpiniones] = useState(false);
   const [newTestimonial, setNewTestimonial] = useState("");
+
+  const navigate = useNavigate()
+
+  const {user} = useContext(AuthContext)
 
   const toggleOpiniones = () => {
     setShowOpiniones(!showOpiniones);
@@ -21,14 +27,12 @@ function CoffeeCardComponent({ title, price, image64, description, testimonials,
     const API_URL = import.meta.env.VITE_API_URL;
 
     const newTestimonialData = {
-      username: 'admin',  // Este valor puede ser dinámico dependiendo de tu lógica de autenticación
+      username: user.sub,  // Este valor puede ser dinámico dependiendo de tu lógica de autenticación
       testimonial: newTestimonial,
       idCoffee: idCoffee
     };
 
     try {
-
-      console.log(newTestimonialData)
 
       const response = await fetch(`${API_URL}/api/testimonials/`, {
         method: 'POST',
@@ -40,7 +44,7 @@ function CoffeeCardComponent({ title, price, image64, description, testimonials,
       });
 
       if (response.ok) {
-        const addedTestimonial = await response.json();
+        // const addedTestimonial = await response.json();
         toast.success('Testimonio enviado correctamente');
         // Opcional: puedes actualizar el estado de los testimonios aquí
       } else {
@@ -50,6 +54,9 @@ function CoffeeCardComponent({ title, price, image64, description, testimonials,
     } catch (error) {
       console.error('ERROR al enviar el testimonio:', error);
       toast.error('Ha ocurrido un error al enviar el testimonio');
+    } finally{
+      setShowOpiniones(false)
+      navigate(0)
     }
 
     setNewTestimonial("");
@@ -70,8 +77,8 @@ function CoffeeCardComponent({ title, price, image64, description, testimonials,
       </div>
 
       {showOpiniones && (
-        <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50">
-          <div className="relative bg-[#494D47] rounded-lg p-4 max-w-lg w-full mx-4">
+        <div className="fixed inset-0 h-screen bg-black bg-opacity-75 flex items-center justify-center z-50">
+          <div className="relative bg-[#494D47] rounded-lg p-4 max-w-lg w-full mx-4 overflow-y-auto h-3/4">
             <button
               className="absolute top-2 right-2 px-2 text-white hover:text-gray-900"
               onClick={toggleOpiniones}
